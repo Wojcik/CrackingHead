@@ -10,10 +10,25 @@ import Cocoa
 
 class SherlockAndAnagrams: BaseProblem {
     func exec() {
-        let string = "kkkk"
+        let string = "bbcbacaabacacaaacbbcaabccacbaaaabbcaaaaaaaccaccabcacabbbbabbbbacaaccbabbccccaacccccabcabaacaabbcbaca"
         print(sherlockAndAnagrams(s: string))
         
     }
+    
+    func factorial(_ n:Int) -> NSDecimalNumber {
+        guard n > 1 else {
+            return 1
+        }
+        let decimal = NSDecimalNumber(integerLiteral: n)
+        return decimal.multiplying(by: factorial(n-1))
+    }
+    
+    func combinationsCount(size:Int) -> Int {
+        let nFactorial:NSDecimalNumber = factorial(size)
+        let divider = factorial(size - 2).multiplying(by: NSDecimalNumber(integerLiteral: 2))
+        return nFactorial.dividing(by: divider).intValue
+    }
+
     
     func sherlockAndAnagrams(s: String) -> Int {
         var stringSize = 1
@@ -28,32 +43,11 @@ class SherlockAndAnagrams: BaseProblem {
             }
             stringSize += 1
         }
-        
         var anagramsCount = 0
-
+        
         for (_, count) in dict {
-            anagramsCount += Utils.factorial(n: count) / (Utils.factorial(n: 2)*Utils.factorial(n: count - 2))
+            anagramsCount += combinationsCount(size: count) // 2 taken from n
         }
         return anagramsCount
-    }
-    
-    func isAnagram(string:Substring, substring:Substring) -> Bool {
-        var stringCharsCount = [Character:Int]()
-        for character in string {
-            stringCharsCount[character, default:0] += 1
-            
-        }
-        var subCharsCount = [Character:Int]()
-        for character in substring {
-            subCharsCount[character, default:0] += 1
-            
-        }
-
-        for (key, value) in stringCharsCount {
-            if subCharsCount[key] != value {
-                return false
-            }
-        }
-        return true
     }
 }
