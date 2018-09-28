@@ -10,36 +10,30 @@ import Cocoa
 
 class SherlockAndAnagrams: BaseProblem {
     func exec() {
-        let string = "ifailuhkqqhucpoltgtyovarjsnrbfpvmupwjjjfiwwhrlkpekxxnebfrwibylcvkfealgonjkzwlyfhhkefuvgndgdnbelgruel"
+        let string = "kkkk"
         print(sherlockAndAnagrams(s: string))
         
     }
+    
     func sherlockAndAnagrams(s: String) -> Int {
         var stringSize = 1
-        var dict = [Int:[Substring]]()
+        var dict = [String:Int]()
         while stringSize < s.count {
             var stringBegin = s.startIndex
             while stringBegin <= s.index(s.endIndex, offsetBy: -1*stringSize) {
                 let stringTail = s.index(stringBegin, offsetBy: stringSize)
-                let substring = s[stringBegin..<stringTail]
-                dict[substring.count, default:[Substring]()].append(substring)
+                let substring = String(s[stringBegin..<stringTail].sorted())
+                dict[substring, default:0] += 1
                 stringBegin = s.index(after: stringBegin)
             }
             stringSize += 1
         }
         
         var anagramsCount = 0
-        for lenght in 2...dict.values.count {
-            let substringsSet = dict[lenght]!
-            for i in 0..<substringsSet.count {
-                for j in i+1..<substringsSet.count {
-                    if isAnagram(string: substringsSet[i], substring: substringsSet[j]) {
-                        anagramsCount += 1
-                    }
-                }
-            }
-        }
 
+        for (_, count) in dict {
+            anagramsCount += Utils.factorial(n: count) / (Utils.factorial(n: 2)*Utils.factorial(n: count - 2))
+        }
         return anagramsCount
     }
     

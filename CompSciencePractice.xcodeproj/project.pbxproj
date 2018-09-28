@@ -10,6 +10,7 @@
 		D6A1A69A215B946A00A76876 /* TwoStringsSubstring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A1A699215B946A00A76876 /* TwoStringsSubstring.swift */; };
 		D6A1A69C215B994900A76876 /* SherlockAndAnagrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A1A69B215B994900A76876 /* SherlockAndAnagrams.swift */; };
 		D6A1A69E215C193500A76876 /* MInimumWindowSubstring.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A1A69D215C193500A76876 /* MInimumWindowSubstring.swift */; };
+		D6A1A6A1215E71FD00A76876 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A1A6A0215E71FD00A76876 /* Utils.swift */; };
 		D6A9E7622157CC2A00F30EB0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A9E7612157CC2A00F30EB0 /* main.swift */; };
 		D6A9E7692157CC5F00F30EB0 /* AddBinaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A9E7682157CC5F00F30EB0 /* AddBinaries.swift */; };
 		D6A9E76B2159005300F30EB0 /* ArrayDSHourglassSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A9E76A2159005300F30EB0 /* ArrayDSHourglassSum.swift */; };
@@ -36,6 +37,7 @@
 		D6A1A699215B946A00A76876 /* TwoStringsSubstring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoStringsSubstring.swift; sourceTree = "<group>"; };
 		D6A1A69B215B994900A76876 /* SherlockAndAnagrams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SherlockAndAnagrams.swift; sourceTree = "<group>"; };
 		D6A1A69D215C193500A76876 /* MInimumWindowSubstring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MInimumWindowSubstring.swift; sourceTree = "<group>"; };
+		D6A1A6A0215E71FD00A76876 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D6A9E75E2157CC2A00F30EB0 /* CompSciencePractice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CompSciencePractice; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A9E7612157CC2A00F30EB0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D6A9E7682157CC5F00F30EB0 /* AddBinaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBinaries.swift; sourceTree = "<group>"; };
@@ -58,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D6A1A69F215E71E900A76876 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D6A1A6A0215E71FD00A76876 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		D6A9E7552157CC2A00F30EB0 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 		D6A9E7602157CC2A00F30EB0 /* CompSciencePractice */ = {
 			isa = PBXGroup;
 			children = (
+				D6A1A69F215E71E900A76876 /* Utils */,
 				D6A9E775215A6FA200F30EB0 /* HashTables */,
 				D6A9E774215A6F9500F30EB0 /* Arrays */,
 				D6A9E7612157CC2A00F30EB0 /* main.swift */,
@@ -176,6 +187,7 @@
 				D6A9E7622157CC2A00F30EB0 /* main.swift in Sources */,
 				D6A1A69C215B994900A76876 /* SherlockAndAnagrams.swift in Sources */,
 				D6A9E76B2159005300F30EB0 /* ArrayDSHourglassSum.swift in Sources */,
+				D6A1A6A1215E71FD00A76876 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
