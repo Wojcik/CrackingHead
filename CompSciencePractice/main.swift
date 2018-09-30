@@ -7,5 +7,9 @@
 //
 
 import Foundation
-SherlockAndAnagrams().exec()
+//SherlockAndAnagrams().exec()
 //MInimumWindowSubstring().exec()
+//let array = [1,2,3,4,5,6,7,8,9,10]
+//print(BinarySearch<Int>().binarySearch(array:array, term:3))
+//
+CountTriplets().exec()

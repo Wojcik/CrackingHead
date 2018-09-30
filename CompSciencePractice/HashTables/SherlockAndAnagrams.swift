@@ -14,39 +14,32 @@ class SherlockAndAnagrams: BaseProblem {
         print(sherlockAndAnagrams(s: string))
         
     }
-    
-    func factorial(_ n:Int) -> NSDecimalNumber {
-        guard n > 1 else {
-            return 1
-        }
-        let decimal = NSDecimalNumber(integerLiteral: n)
-        return decimal.multiplying(by: factorial(n-1))
-    }
-    
-    func combinationsCount(size:Int) -> Int {
-        let nFactorial:NSDecimalNumber = factorial(size)
-        let divider = factorial(size - 2).multiplying(by: NSDecimalNumber(integerLiteral: 2))
-        return nFactorial.dividing(by: divider).intValue
-    }
 
     
     func sherlockAndAnagrams(s: String) -> Int {
         var stringSize = 1
-        var dict = [String:Int]()
-        while stringSize < s.count {
-            var stringBegin = s.startIndex
-            while stringBegin <= s.index(s.endIndex, offsetBy: -1*stringSize) {
-                let stringTail = s.index(stringBegin, offsetBy: stringSize)
-                let substring = String(s[stringBegin..<stringTail].sorted())
-                dict[substring, default:0] += 1
-                stringBegin = s.index(after: stringBegin)
+        let longestString = s.count - 1
+        var length = 1
+        var dict: [String: Int] = [:]
+        
+        while length <= longestString  {
+            
+            //create all substrings of the given length
+            for i in 0...longestString {
+                let part = String(s.dropFirst(i).prefix(length)).sorted().map({String($0)}).joined()
+                
+                if part.count == length {
+                    let countVal = dict[part] ?? 0
+                    dict[part] = countVal + 1
+                }
             }
-            stringSize += 1
+            length += 1
         }
+        
         var anagramsCount = 0
         
         for (_, count) in dict {
-            anagramsCount += combinationsCount(size: count) // 2 taken from n
+            anagramsCount += Utils.combinationsCount(n: count, k:2) // k taken from n
         }
         return anagramsCount
     }
