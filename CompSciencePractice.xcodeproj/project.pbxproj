@@ -13,6 +13,7 @@
 		D6A1A6A1215E71FD00A76876 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A1A6A0215E71FD00A76876 /* Utils.swift */; };
 		D6A1A6A321612A5000A76876 /* BinarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A1A6A221612A5000A76876 /* BinarySearch.swift */; };
 		D6A1A6A5216138CE00A76876 /* CountTriplets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A1A6A4216138CE00A76876 /* CountTriplets.swift */; };
+		D6A1A6A7216268AD00A76876 /* Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A1A6A6216268AD00A76876 /* Queries.swift */; };
 		D6A9E7622157CC2A00F30EB0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A9E7612157CC2A00F30EB0 /* main.swift */; };
 		D6A9E7692157CC5F00F30EB0 /* AddBinaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A9E7682157CC5F00F30EB0 /* AddBinaries.swift */; };
 		D6A9E76B2159005300F30EB0 /* ArrayDSHourglassSum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A9E76A2159005300F30EB0 /* ArrayDSHourglassSum.swift */; };
@@ -42,6 +43,7 @@
 		D6A1A6A0215E71FD00A76876 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D6A1A6A221612A5000A76876 /* BinarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearch.swift; sourceTree = "<group>"; };
 		D6A1A6A4216138CE00A76876 /* CountTriplets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTriplets.swift; sourceTree = "<group>"; };
+		D6A1A6A6216268AD00A76876 /* Queries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queries.swift; sourceTree = "<group>"; };
 		D6A9E75E2157CC2A00F30EB0 /* CompSciencePractice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CompSciencePractice; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A9E7612157CC2A00F30EB0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D6A9E7682157CC5F00F30EB0 /* AddBinaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBinaries.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				D6A1A699215B946A00A76876 /* TwoStringsSubstring.swift */,
 				D6A1A69B215B994900A76876 /* SherlockAndAnagrams.swift */,
 				D6A1A69D215C193500A76876 /* MInimumWindowSubstring.swift */,
+				D6A1A6A6216268AD00A76876 /* Queries.swift */,
 			);
 			path = HashTables;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				D6A9E7712159380F00F30EB0 /* BaseProblem.swift in Sources */,
 				D6A9E777215A6FB300F30EB0 /* RansomNote.swift in Sources */,
 				D6A1A6A5216138CE00A76876 /* CountTriplets.swift in Sources */,
+				D6A1A6A7216268AD00A76876 /* Queries.swift in Sources */,
 				D6A9E7692157CC5F00F30EB0 /* AddBinaries.swift in Sources */,
 				D6A9E773215A2B9500F30EB0 /* MinimumSwaps.swift in Sources */,
 				D6A9E76D215914EF00F30EB0 /* ArrayRotation.swift in Sources */,

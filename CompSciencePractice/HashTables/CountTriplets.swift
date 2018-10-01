@@ -15,36 +15,30 @@ class CountTriplets: BaseProblem {
     }
     
     func countTriplets(arr: [Int], r: Int) -> Int {
-        var tripletsSets = [Int:[[Int]]]()
-        let array = arr.sorted()
-        var count = 0
-        
-        for value in array {
-            if tripletsSets[value] == nil {
-                tripletsSets[value] = [[value]]
-            } else {
-                tripletsSets[value]!.append([value])
+        var secondsCount = [Int:Int]()
+        var thirdsCount = [Int:Int]()
+        var totalCount = 0
+        for number in arr {
+            if let thirds = thirdsCount[number] {
+                totalCount += thirds
             }
-            var previousSetId = value/r
-            while previousSetId >= value / (r*r), tripletsSets[previousSetId] != nil {
-                if let lastTriple = tripletsSets[previousSetId]!.last, lastTriple.last! == value {
-                    tripletsSets[previousSetId]!.append(Array(lastTriple))
+            
+            if let seconds = secondsCount[number] {
+                if let thirds = thirdsCount[number*r] {
+                    thirdsCount[number*r] = thirds + seconds
                 } else {
-                    for i in 0..<tripletsSets[previousSetId]!.count {
-                        tripletsSets[previousSetId]![i].append(value)
-                    }
+                    thirdsCount[number*r] = seconds
                 }
-                previousSetId /= r
+            }
+            
+            if let seconds = secondsCount[number*r] {
+                secondsCount[number*r] = seconds + 1
+            } else {
+                secondsCount[number*r] = 1
             }
         }
-        
-        for tripletsSets in tripletsSets.values {
-            count += tripletsSets.reduce(into: 0) { result, value in
-                result += value.count == 3 ? 1:0
-            }
-        }
-        
-        return count
+        return totalCount
     }
 }
+
 
