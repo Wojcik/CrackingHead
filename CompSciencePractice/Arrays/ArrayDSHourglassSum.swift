@@ -10,7 +10,7 @@
  Problem description  - https://www.hackerrank.com/challenges/2d-array/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=arrays
  */
 
-import Cocoa
+import Foundation
 
 class ArrayDSHourglassSum {
     static let pattern = [[1,1,1],[0,1,0],[1,1,1]]

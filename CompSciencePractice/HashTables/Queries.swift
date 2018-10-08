@@ -6,7 +6,7 @@
 //  Copyright © 2018 Anton Kovalov. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 enum QueryType : Int {
     case AppendQueryType = 1
@@ -16,6 +16,7 @@ enum QueryType : Int {
 
 class Queries: BaseProblem {
     func exec() {
+        let input = readIputFile(name: "Queries")
         let queries = [[1,1],[1,1],[2,2],[1,2],[1,2],[3,2]]
         print(freqQuery(queries: queries))
     }
@@ -55,5 +56,12 @@ class Queries: BaseProblem {
 
         }
         return results
+    }
+    
+    func readIputFile(name:String) -> [[Int]] {
+        var output = [[Int]]()
+        let testCasesDir = FileManager.default.currentDirectoryPath.appending("TestCasesInputs/\(name)")
+        print(testCasesDir)
+        return output
     }
 }

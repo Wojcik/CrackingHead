@@ -6,7 +6,7 @@
 //  Copyright © 2018 Anton Kovalov. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 
 class BinarySearch <T> where T:Comparable, T:Numeric {

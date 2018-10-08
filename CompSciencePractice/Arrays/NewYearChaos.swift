@@ -6,7 +6,7 @@
 //  Copyright © 2018 Anton Kovalov. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 class NewYearChaos: BaseProblem {
     func exec() {

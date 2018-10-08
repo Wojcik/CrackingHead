@@ -13,4 +13,9 @@ import Foundation
 //print(BinarySearch<Int>().binarySearch(array:array, term:3))
 //
 //CountTriplets().exec()
-Queries().exec()
+//Queries().exec()
+//AlternatingCharacters().exec()
+//SpecialPalindrome().exec()
+//ReverseDoubly().exec()
+//FindMergePoint().exec()
+QueueFromStacks().exec()
