@@ -15,11 +15,23 @@ class Stack<T>: NSObject {
         array.append(item)
     }
 
+    func peek() -> T? {
+        return array.last
+    }
+    
     func pop() -> T? {
         return array.popLast()
     }
     
     func last() -> T? {
         return array.last
+    }
+    
+    func isEmpty() -> Bool {
+        return array.isEmpty
+    }
+    
+    func debugDesc() {
+        print(array)
     }
 }
