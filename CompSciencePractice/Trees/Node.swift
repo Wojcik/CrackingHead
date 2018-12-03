@@ -8,13 +8,18 @@
 
 import Cocoa
 
-class Node {
+class Node: Equatable {
     var left:Node?
     var right:Node?
+    var parent:Node?
     let data:Int
     
     init(data:Int) {
         self.data = data
+    }
+    
+    static func == (lhs:Node, rhs:Node) -> Bool {
+        return lhs.data == rhs.data
     }
 }
 
@@ -31,6 +36,7 @@ func binarySearchTree() -> Node {
             currentNode = inserNode(data: data, root: root.right)
             root.right = currentNode
         }
+        currentNode.parent = root
         return root
     }
     
@@ -38,11 +44,11 @@ func binarySearchTree() -> Node {
     inserNode(data: 5, root: root)
     inserNode(data: 11, root: root)
     inserNode(data: 4, root: root)
-    inserNode(data: 2, root: root)
-    inserNode(data: 22, root: root)
-    inserNode(data: 23, root: root)
-    inserNode(data: 6, root: root)
-    inserNode(data: 7, root: root)
-    inserNode(data: 8, root: root)
+//    inserNode(data: 2, root: root)
+//    inserNode(data: 22, root: root)
+//    inserNode(data: 23, root: root)
+//    inserNode(data: 6, root: root)
+//    inserNode(data: 7, root: root)
+//    inserNode(data: 8, root: root)
     return root
 }

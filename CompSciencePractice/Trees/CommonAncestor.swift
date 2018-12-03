@@ -20,6 +20,6 @@ class CommonAncestor: BaseProblem {
         if root == nil || root! == left || root! == right {
             return root
         }
-        
+        return nil
     }
 }

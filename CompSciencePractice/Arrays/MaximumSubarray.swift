@@ -15,22 +15,48 @@ class MaximumSubarray: BaseProblem {
         let array = [13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7]
         print(maximumSubarray(array, startIndex:0, endIndex:array.count-1))
         print(maximumSubarray(array))
+        print(maximumSubarrayPrefix(array))
+
+    }
+    
+    func maximumSubarrayPrefix(_ array: [Int]) -> result {
+        var prefixArray = [Int]()
+        for value in array {
+            prefixArray.append((prefixArray.last ?? 0) + value)
+        }
+        
+        var minPrefixSum = 0
+        var result = (start:0, end:0, sum:Int.min)
+        for i in 0..<array.count {
+            let cand = prefixArray[i] - minPrefixSum
+            if cand > result.sum {
+                result.sum = cand
+                result.end = i
+            }
+            if prefixArray[i] < minPrefixSum {
+                minPrefixSum = prefixArray[i]
+                result.start = i + 1
+            }
+        }
+        return result
     }
     
     func maximumSubarray(_ array:[Int]) -> result {
         var result = (start:0, end:0, sum:0)
-        var subArraySum = 0
-
-        for i in 0..<array.count {
-            if subArraySum > 0 {
-                subArraySum += array[i]
+        var currSum = 0
+        for (index, value) in array.enumerated() {
+//            currSum = max(value, currSum + value)
+//            result.sum = max(result.sum, currSum)
+            
+            if currSum + value > value {
+                currSum += value
             } else {
-                result.start = i
-                subArraySum = array[i]
+                currSum = value
+                result.start = index
             }
-            if subArraySum > result.sum {
-                result.sum = subArraySum
-                result.end = i
+            if currSum > result.sum {
+                result.end = index
+                result.sum = currSum
             }
         }
         return result

@@ -15,10 +15,10 @@ class LinkedListNode:NSObject {
         data = nodeData
     }
 }
-//
+
 //extension LinkedListNode: Equatable {
 //    static func == (lhs: LinkedListNode, rhs: LinkedListNode) -> Bool {
-//        lhs.data = rhs.data
+//        return lhs.data == rhs.data
 //    }
 //}
 
@@ -77,3 +77,28 @@ class DoublyLinkedList:SinglyLinkedList {
         print(result.joined(separator: " -> "))
     }
 }
+
+//indirect enum LinkedListNode<T> {
+//    case value(element:T, next:LinkedListNode<T>)
+//    case end
+//}
+//
+//extension LinkedListNode:Sequence {
+//    func makeIterator() -> LinkedListIterator<T> {
+//        return LinkedListIterator(current: self)
+//    }
+//}
+//
+//struct LinkedListIterator<T>:IteratorProtocol {
+//    var current:LinkedListNode<T>
+//    
+//    mutating func next() -> T? {
+//        switch current{
+//        case let .value(element, next):
+//            current = next
+//            return element
+//        case .end:
+//            return nil
+//        }
+//    }
+//}
