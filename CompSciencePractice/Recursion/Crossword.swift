@@ -8,7 +8,22 @@
 
 import Cocoa
 
+enum Direction:Int {
+    case horizontal
+    case vertical
+}
+
+struct CandidatePosition {
+    let i:Int
+    let j:Int
+    let direction:Direction
+    let chars:[Character]
+}
+
 class Crossword: BaseProblem {
+    let directionsI = [0, 1]
+    let directionsJ = [1, 0]
+    
     func exec() {
         let input = """
         +-++++++++
@@ -25,54 +40,79 @@ class Crossword: BaseProblem {
         print(crosswordPuzzle(crossword: input, words: "LONDON;DELHI;ICELAND;ANKARA"))
     }
     func crosswordPuzzle(crossword: [String], words: String) -> [String] {
-        var words = words.split(separator: ";").map {String($0)}
-        var crossword = crossword.reduce(into: [[Int]]()) { (result: inout [[Int]], value) in
-            result.append(value.map {
-                return $0 == "+" ? 0 : 1
-            })
-        }
-        crossword.insert(Array(repeating: 0, count: crossword.first!.count), at: 0)
-        crossword.append(Array(repeating: 0, count: crossword.first!.count))
-        crossword = crossword.map {
-            var newArray = $0
-            newArray.insert(0, at: 0)
-            newArray.append(0)
-            return newArray
-        }
-        crosswordPuzzle(crossword: &crossword, words: words)
-
+        let field = crossword.map {Array($0)}
+//        if fillCrossword(field: field, words: words.split(separator: ";").map {String($0)}) {
+//            return [""]
+//        } else {
+//            return [""]
+//        }
+        var positions = getCandidatesPositions(field)
         return [""]
     }
-    func crosswordPuzzle(crossword: inout [[Int]], words: [String]) -> [String] {
-        for i in 0..<crossword.count {
-            for j in 0..<crossword[i].count {
-                if crossword[i][j] == -1 {
-                    continue
-                } else if (crossword[i][j] == 1) {
-                    var countHorizontal = 0
-                    var jH = j
-                    while crossword[i][jH] == 1 {
-                        if !isIntersection(i,jH, crossword, directions:[[-1, 0], [1, 0]]) {
-                            crossword[i][jH] = 2
-                        }
-                        countHorizontal += 1
-                        jH += 1
+    
+    func getCandidatesPositions(_ field:[[Character]]) -> [CandidatePosition] {
+        var result = [CandidatePosition]()
+        for i in 0..<field.count {
+            for j in 0..<field[i].count {
+                if field[i][j] == "-" && field[i][j+1] == "-"{
+                    var next = j + 1
+                    var wordLenght = 1
+                    while next < field.count && field[next][j] == "-" {
+                        wordLenght += 1
+                        next += 1
                     }
-                    
-                    var countVertical = 0
-                    var iV = i
-                    while crossword[iV][j] == 1 {
-                        if !isIntersection(iV,j, crossword, directions: [[0, 1], [0, -1]]) {
-                            crossword[iV][j] = 2
-                        }
-                        countVertical += 1
-                        iV += 1
-                    }
-                    print(countHorizontal, countVertical)
+                    let candidatePos = CandidatePosition(i: i, j: j, direction: .horizontal, chars: [Character]())
+                    result.append(candidatePos)
+                    break
                 }
             }
         }
-        return [""]
+        return result
+    }
+    
+    func fillCrossword(field:[[Character]], words:[String]) -> Bool {
+        printField(field)
+        if words.count == 0 {
+            return true
+        }
+        for i in 0..<field.count {
+            for j in 0..<field[i].count {
+                if field[i][j] == "-" {
+                    var nextI = i + 1
+                    var wordLenght = 1
+                    while nextI < field.count && field[nextI][j] == "-" {
+                        wordLenght += 1
+                        nextI += 1
+                    }
+                    if wordLenght == 1 {
+                        return false
+                    }
+                    let candidates = words.filter {$0.count == wordLenght}
+                    if candidates.isEmpty {
+                        return false
+                    }
+                    for candidate in candidates {
+                        var candidateChars = Array(candidate)
+                        var field = field
+                        var remainingChars = wordLenght
+                        while remainingChars > 0 {
+                            let idx = candidateChars.count - remainingChars
+                            field[i + idx][j] = candidateChars[idx]
+                            remainingChars -= 1
+                        }
+                        let remainingWords = words.filter {$0 != candidate}
+                        fillCrossword(field: field, words: remainingWords)
+                    }
+                }
+            }
+        }
+        return false
+    }
+    
+    func printField(_ field:[[Character]]) {
+        for row in field {
+            print(row)
+        }
     }
     
     func isIntersection(_ i:Int, _ j:Int, _ array:[[Int]], directions:[[Int]]) -> Bool {

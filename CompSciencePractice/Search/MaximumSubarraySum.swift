@@ -6,6 +6,9 @@
 //  Copyright © 2018 Anton Kovalov. All rights reserved.
 //
 
+/*
+ Problem description - https://www.hackerrank.com/challenges/maximum-subarray-sum/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=search
+ */
 import Cocoa
 
 class MaximumSubarraySum: BaseProblem {

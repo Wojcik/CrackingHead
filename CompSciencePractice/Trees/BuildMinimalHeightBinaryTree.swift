@@ -21,7 +21,9 @@ class BuildMinimalHeightBinaryTree: BaseProblem {
         let middle = array.count/2
         let root = Node.init(data: array[middle])
         root.left = buildTree(Array(array[0..<middle]))
+        root.left?.parent = root
         root.right = buildTree(Array(array[middle+1..<array.count]))
+        root.right?.parent = root
         return root
     }
 }
